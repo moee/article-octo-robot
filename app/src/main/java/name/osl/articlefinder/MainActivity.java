@@ -74,7 +74,12 @@ public class MainActivity extends ActionBarActivity {
                     TextView textViewArticle = (TextView) rootView.findViewById(R.id.article);
                     TextView textViewWord = (TextView) rootView.findViewById(R.id.word);
                     textViewWord.setText(searchTerm);
-                    textViewArticle.setText(articleDao.getArticle(searchTerm).toString());
+                    ArticleDao.Article result = articleDao.getArticle(searchTerm, rootView.getContext());
+                    if (result == null) {
+                        textViewArticle.setText("?");
+                    } else {
+                        textViewArticle.setText(result.toString());
+                    }
                 }
             });
 
