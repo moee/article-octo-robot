@@ -13,6 +13,9 @@ import java.io.OutputStream;
 
 /**
  * Created by michaelosl on 15/03/15.
+ *
+ * Mostly adapted from here:
+ * http://stackoverflow.com/questions/5627037/how-can-i-embed-an-sqlite-database-into-an-application
  */
 public class ArticleReaderDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -26,8 +29,7 @@ public class ArticleReaderDbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
         this.context = context;
-
-        if (false && checkDataBase()) {
+        if (checkDataBase()) {
             openDataBase();
         } else {
             this.getReadableDatabase();

@@ -43,6 +43,9 @@ public class ArticleDao {
         try {
             Log.d(LOG_TAG, "moveToFirst()");
             Log.d(LOG_TAG, "count is " + c.getCount());
+            if (c.getColumnCount() != 1) {
+                return null;
+            }
             c.moveToFirst();
             int colIndex = c.getColumnIndex(ArticleReaderContract.WordEntry.COLUMN_NAME_ARTICLE);
             Log.d(LOG_TAG, "colIndex = " + colIndex);
